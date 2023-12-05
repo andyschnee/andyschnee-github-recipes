@@ -12,14 +12,13 @@
     <body>
         <h1>Recipes</h1>
         <section>
-            <p>Search</p>
             <input type="text" id="inputSearch" value="Avocado" onfocus="this.value=''">
             <button id="btnSearch" onclick="findRecipes()">Search</button>
         </section>
         <section>
             <ul id="ulMatches"></ul>
         </section>
-        <section id="sectionRecipe">
+        <section id="sectionRecipe" class="hide">
             <div id="pName"></div>
             <div id="pServes"></div>
             <div id="pIngredients"></div>

@@ -27,6 +27,8 @@ function findRecipes() {
             <li onclick="showRecipe(${index})">${result.value.Name}</li>
         `)
     });
+
+    $('#sectionRecipe').addClass('hide');
 }
 
 function searchJson(obj, searchTerm) {
@@ -63,6 +65,8 @@ function showRecipe(index) {
     $('#pServes').html(recipeItem.Serves);
     $('#pIngredients').html(recipeItem.Ingredients);
     $('#pMethod').html(recipeItem.Method);
+
+    $('.hide').removeClass('hide');
 }
 
 
