@@ -77,31 +77,29 @@ function createICS() {
     var eventEndTime = "21:30:00";
     var eventDescription = "Your Event Description!";
 
-  // Create the ICS file content
-  var icsFileContent = "BEGIN:VCALENDAR\n" +
-    "VERSION:2.0\n" +
-    "PRODID:-//My Company//NONSGML Event//EN\n" +
-    "BEGIN:VEVENT\n" +
-    "UID:" + eventName + "@" + eventDate + "\n" +
-    "DTSTAMP:" + eventDate + "T" + eventStartTime + "Z\n" +
-    "DTSTART:" + eventDate + "T" + eventStartTime + "Z\n" +
-    "DTEND:" + eventDate + "T" + eventEndTime + "Z\n" +
-    "SUMMARY:" + eventName + "\n" +
-    "DESCRIPTION:" + eventDescription + "\n" +
-    "END:VEVENT\n" +
-    "END:VCALENDAR\n";
+    let icsFileContent = `
+        BEGIN:VCALENDAR
+        VERSION:2.0
+        CALSCALE:GREGORIAN
+        BEGIN:VEVENT
+        SUMMARY:${eventName}
+        DESCRIPTION:${eventDescription}
+        DTSTART:20231211T120000
+        DTEND:20231211T140000
+        STATUS:CONFIRMED
+        SEQUENCE:0
+        END:VEVENT
+        END:VCALENDAR`;
 
-  // Create the download link
+    var timestamp = new Date();
+    timestamp = timestamp.getDate() + '/' + (timestamp.getMonth()+1) + '/' + timestamp.getFullYear();
 
-  var timestamp = new Date();
-  timestamp = timestamp.getDate() + '/' + (timestamp.getMonth()+1) + '/' + timestamp.getFullYear();
-
-  let a = document.createElement('a');
-  a.setAttribute('href', "data:text/calendar;charset=utf-8," + encodeURIComponent(icsFileContent));
-  a.setAttribute('download', `calendar-${timestamp}.ics`);
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+    let a = document.createElement('a');
+    a.setAttribute('href', "data:text/calendar;charset=utf-8," + encodeURIComponent(icsFileContent));
+    a.setAttribute('download', `calendar-${timestamp}.ics`);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 }
 
 
