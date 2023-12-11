@@ -70,4 +70,39 @@ function showRecipe(index) {
 }
 
 
+function createICS() {
+    var eventName = "Your Event name";
+    var eventDate = "2023-12-11";
+    var eventStartTime = "20:30:00";
+    var eventEndTime = "21:30:00";
+    var eventDescription = "Your Event Description!";
+
+  // Create the ICS file content
+  var icsFileContent = "BEGIN:VCALENDAR\n" +
+    "VERSION:2.0\n" +
+    "PRODID:-//My Company//NONSGML Event//EN\n" +
+    "BEGIN:VEVENT\n" +
+    "UID:" + eventName + "@" + eventDate + "\n" +
+    "DTSTAMP:" + eventDate + "T" + eventStartTime + "Z\n" +
+    "DTSTART:" + eventDate + "T" + eventStartTime + "Z\n" +
+    "DTEND:" + eventDate + "T" + eventEndTime + "Z\n" +
+    "SUMMARY:" + eventName + "\n" +
+    "DESCRIPTION:" + eventDescription + "\n" +
+    "END:VEVENT\n" +
+    "END:VCALENDAR\n";
+
+  // Create the download link
+
+  var timestamp = new Date();
+  timestamp = timestamp.getDate() + '/' + (timestamp.getMonth()+1) + '/' + timestamp.getFullYear();
+
+  let a = document.createElement('a');
+  a.setAttribute('href', "data:text/calendar;charset=utf-8," + encodeURIComponent(icsFileContent));
+  a.setAttribute('download', `calendar-${timestamp}.ics`);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+
 let searchResults;
