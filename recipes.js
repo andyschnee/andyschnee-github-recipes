@@ -81,8 +81,7 @@ function createICS() {
         BEGIN:VCALENDAR
         VERSION:2.0
         CALSCALE:GREGORIAN
-        BEGIN:VEVENT
-        SUMMARY:${eventName}
+        BEGIN:VEVENTSUMMARY:${eventName}
         DESCRIPTION:${eventDescription}
         DTSTART:20231211T120000
         DTEND:20231211T140000
@@ -91,12 +90,15 @@ function createICS() {
         END:VEVENT
         END:VCALENDAR`;
 
+    let csvEvent = `Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location
+    Meeting,2023-01-01,10:00 AM,2023-01-01,11:30 AM,FALSE,Discussion about project,Conference Room`;
+
+
     var timestamp = new Date();
     timestamp = timestamp.getDate() + '/' + (timestamp.getMonth()+1) + '/' + timestamp.getFullYear();
-
     let a = document.createElement('a');
-    a.setAttribute('href', "data:text/calendar;charset=utf-8," + encodeURIComponent(icsFileContent));
-    a.setAttribute('download', `calendar-${timestamp}.ics`);
+    a.setAttribute('href', "data:text/csv;charset=utf-8," + encodeURIComponent(csvEvent));
+    a.setAttribute('download', `calendar-${timestamp}.csv`);
     document.body.appendChild(a);
     a.click();
     a.remove();
