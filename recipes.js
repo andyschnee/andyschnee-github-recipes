@@ -55,7 +55,7 @@ function searchJson(obj, searchTerm) {
 function urlEvent() {
 
     let eventDate = $('#dateEvent').val().replace(/-/g, '');
-    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?dates=${eventDate}T190000Z/${eventDate}T210000Z&src=oo9ibfskdn845lhfns53gntbvo%40group.calendar.google.com&text=${$('#pName').text()}`;
+    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}%26dates=${eventDate}T183000Z/${eventDate}T193000Z%26src=oo9ibfskdn845lhfns53gntbvo%40group.calendar.google.com`;
 
     let a = document.createElement('a');
     a.setAttribute('href', urlEvent);
@@ -64,7 +64,6 @@ function urlEvent() {
     a.click();
     a.remove();
 
-    console.debug(urlEvent);
 }
 
 function showRecipe(index) {
