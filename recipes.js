@@ -4,20 +4,15 @@ let jsonRecipes = {"data": [{"Name":"APPLE AND BLACKBERRY MUESLI CAKE","Ingredie
 
 // Favourite, Ingredients, Method, Name, Serves
 
-/*
-    get jQuery
-    on inputSearch, filter all fields in json and return picklist (ulmatches)
-    on li click, fill fields
-*/
-
-console.debug(jsonRecipes);
-
 
 $('#inputSearch').on('keypress',function(e) {
     if(e.which == 13) {
         findRecipes();
     }
 });
+
+let a = new Date((new Date()).valueOf() + 1000*3600*24);
+$('#dateEvent').val(a.toISOString().split('T')[0]);
 
 function findRecipes() {
     searchResults = searchJson(jsonRecipes, $('#inputSearch').val());
@@ -59,23 +54,14 @@ function searchJson(obj, searchTerm) {
 
 function urlEvent() {
 
-    // ${$('#sectionRecipe').text()}
-    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=20231213T190000Z/20231213T210000Z&details=test&src=oo9ibfskdn845lhfns53gntbvo%2540group.calendar.google.com`;
-
-    //window.open(urlEvent); 
+    let eventDate = $('#dateEvent').val().replace(/-/g, '');
+    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=${eventDate}T190000Z/${eventDate}T210000Z&details=${$('#sectionRecipe').text()}&src=oo9ibfskdn845lhfns53gntbvo%40group.calendar.google.com`;
 
     let a = document.createElement('a');
     a.setAttribute('href', urlEvent);
     document.body.appendChild(a);
     a.click();
     a.remove();
-
-}
-
-function createEvent() {
-    console.debug('event');
-
-
 }
 
 function showRecipe(index) {
