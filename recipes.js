@@ -58,7 +58,6 @@ function searchJson(obj, searchTerm) {
 }
 
 function urlEvent() {
-    $('body').prepend('0922');
 
     // ${$('#sectionRecipe').text()}
     let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=20231213T190000Z/20231213T210000Z&details=test&src=oo9ibfskdn845lhfns53gntbvo%2540group.calendar.google.com`;
