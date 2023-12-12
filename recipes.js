@@ -55,13 +55,16 @@ function searchJson(obj, searchTerm) {
 function urlEvent() {
 
     let eventDate = $('#dateEvent').val().replace(/-/g, '');
-    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=${eventDate}T190000Z/${eventDate}T210000Z&details=${$('#sectionRecipe').text()}&src=oo9ibfskdn845lhfns53gntbvo%40group.calendar.google.com`;
+    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=${eventDate}T190000Z/${eventDate}T210000Z&src=oo9ibfskdn845lhfns53gntbvo%40group.calendar.google.com`;
 
     let a = document.createElement('a');
     a.setAttribute('href', urlEvent);
+    a.setAttribute('target', '_blank');
     document.body.appendChild(a);
     a.click();
     a.remove();
+
+    console.debug(urlEvent);
 }
 
 function showRecipe(index) {
