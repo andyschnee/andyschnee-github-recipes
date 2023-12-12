@@ -57,6 +57,21 @@ function searchJson(obj, searchTerm) {
     return results;
 }
 
+function urlEvent() {
+    console.debug('url');
+
+    // ${$('#sectionRecipe').text()}
+    let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=20231213T190000Z/20231213T210000Z&details=test&src=oo9ibfskdn845lhfns53gntbvo%2540group.calendar.google.com`;
+
+    window.open(urlEvent); 
+}
+
+function createEvent() {
+    console.debug('event');
+
+
+}
+
 function showRecipe(index) {
     $('#ulMatches').html('');
     let recipeItem = searchResults[index].value;
@@ -67,41 +82,6 @@ function showRecipe(index) {
     $('#pMethod').html(recipeItem.Method);
 
     $('.hide').removeClass('hide');
-}
-
-
-function createICS() {
-    var eventName = "Your Event name";
-    var eventDate = "2023-12-11";
-    var eventStartTime = "20:30:00";
-    var eventEndTime = "21:30:00";
-    var eventDescription = "Your Event Description!";
-
-    let icsFileContent = `
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        CALSCALE:GREGORIAN
-        BEGIN:VEVENTSUMMARY:${eventName}
-        DESCRIPTION:${eventDescription}
-        DTSTART:20231211T120000
-        DTEND:20231211T140000
-        STATUS:CONFIRMED
-        SEQUENCE:0
-        END:VEVENT
-        END:VCALENDAR`;
-
-    let csvEvent = `Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location
-    Meeting,2023-01-01,10:00 AM,2023-01-01,11:30 AM,FALSE,Discussion about project,Conference Room`;
-
-
-    var timestamp = new Date();
-    timestamp = timestamp.getDate() + '/' + (timestamp.getMonth()+1) + '/' + timestamp.getFullYear();
-    let a = document.createElement('a');
-    a.setAttribute('href', "data:text/csv;charset=utf-8," + encodeURIComponent(csvEvent));
-    a.setAttribute('download', `calendar-${timestamp}.csv`);
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
 }
 
 
