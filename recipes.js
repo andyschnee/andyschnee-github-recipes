@@ -63,7 +63,14 @@ function urlEvent() {
     // ${$('#sectionRecipe').text()}
     let urlEvent = `https://www.google.com/url?q=https://calendar.google.com/calendar/u/0/r/eventedit?text=${$('#pName').text()}&dates=20231213T190000Z/20231213T210000Z&details=test&src=oo9ibfskdn845lhfns53gntbvo%2540group.calendar.google.com`;
 
-    window.open(urlEvent); 
+    //window.open(urlEvent); 
+
+    let a = document.createElement('a');
+    a.setAttribute('href', urlEvent);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
 }
 
 function createEvent() {
